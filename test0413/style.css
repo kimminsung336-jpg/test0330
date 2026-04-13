@@ -1,0 +1,192 @@
+/* 1. 기본 스타일 리셋 및 배경 설정 */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f7f3e9; /* 전체 베이지색 배경 */
+  font-family: 'Pretendard', 'Malgun Gothic', sans-serif;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* 2. 헤더 영역 */
+header {
+  background-color: #fff;
+  text-align: center;
+  padding: 30px 0 10px;
+  border-bottom: 1px solid #e0dcd0;
+}
+
+header h1 img {
+  max-width: 200px;
+  margin-bottom: 15px;
+}
+
+.main-nav ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  border-top: 1px solid #eee;
+  padding: 15px 0;
+}
+
+.main-nav a {
+  text-decoration: none;
+  color: #666;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 0 15px;
+  letter-spacing: 1px;
+}
+
+.main-nav a:hover {
+  color: #89b83b;
+}
+
+/* 3. 레이아웃 (중앙 정렬 및 가로 배치) */
+.wrapper {
+  max-width: 1000px;
+  margin: 40px auto;
+  display: flex;
+  gap: 30px; /* 본문과 사이드바 간격 */
+  padding: 0 20px;
+}
+
+/* 4. 메인 콘텐츠 영역 */
+main {
+  flex: 2; /* 2만큼의 비율 차지 */
+  background: #fff;
+  padding: 40px;
+  border-radius: 20px; /* 둥근 모서리 */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+
+.post-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* 날짜 배지 (초록색 타원) */
+.date-badge {
+  display: inline-block;
+  background-color: #89b83b;
+  color: #fff;
+  padding: 5px 20px;
+  border-radius: 30px;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.eyecatch img {
+  width: 100%;
+  border-radius: 15px;
+  margin-bottom: 30px;
+}
+
+/* 섹션 제목 (아이콘과 밑줄) */
+.section-title {
+  font-size: 20px;
+  color: #333;
+  padding-bottom: 8px;
+  margin: 40px 0 20px;
+  border-bottom: 2px solid #89b83b; /* 초록색 밑줄 */
+  display: flex;
+  align-items: center;
+}
+
+/* 나뭇잎 아이콘 (이미지가 없을 때 가상 요소로 구현) */
+.section-title::before {
+  content: '🌿'; /* 실제 나뭇잎 이미지가 있다면 background로 교체 가능 */
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+/* 본문 이미지 및 캡션 */
+figure {
+  margin: 30px 0;
+  text-align: left;
+}
+
+figure img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+figcaption {
+  font-size: 13px;
+  color: #888;
+  margin-top: 8px;
+}
+
+/* 5. 사이드바 영역 */
+aside {
+  flex: 1; /* 1만큼의 비율 차지 */
+}
+
+.sidebar-widget {
+  background: #fff;
+  padding: 25px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+}
+
+.sidebar-widget h3 {
+  font-size: 18px;
+  color: #d38c5d; /* 주황색 포인트 */
+  margin-bottom: 15px;
+}
+
+.sidebar-widget ul {
+  list-style: none;
+}
+
+.sidebar-widget li {
+  padding: 10px 0;
+  font-size: 14px;
+  border-bottom: 1px dotted #e0e0e0; /* 점선 구분선 */
+}
+
+.sidebar-widget li:last-child {
+  border-bottom: none;
+}
+
+.sidebar-widget a {
+  text-decoration: none;
+  color: #555;
+}
+
+.sidebar-widget a:hover {
+  text-decoration: underline;
+}
+
+/* 사이드바 배너 및 텍스트 */
+.sidebar-banner {
+  text-align: center;
+  background: #fff;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.sidebar-banner p {
+  font-size: 14px;
+  margin-bottom: 15px;
+  color: #666;
+}
+
+.sidebar-banner img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+/* 6. 푸터 */
+footer {
+  text-align: center;
+  padding: 40px 0;
+  color: #999;
+  font-size: 12px;
+}
