@@ -1,115 +1,176 @@
 @charset "UTF-8";
-/* 1. 기본 폰트 및 배경 설정 */
+
+/* 1. 기본 폰트 및 초기화 */
 body {
     font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    background-color: #f4f7f9;
+    margin: 0;
+    padding: 60px 0; /* 헤더 제거로 인한 상단 여백 넉넉하게 확보 */
+    color: #2d3436;
     line-height: 1.6;
-    color: #333;
-    background-color: #f8f9fa;
-    max-width: 800px;
-    margin: 40px auto;
-    padding: 20px;
 }
 
-/* 2. 제목 스타일링 */
-h1 {
-    font-size: 2.5rem;
-    border-bottom: 3px solid #000;
-    padding-bottom: 10px;
-    margin-bottom: 30px;
+h1, h2, h3, p, dl, dt, dd {
+    margin: 0;
 }
 
-h2 {
-    font-size: 1.5rem;
-    color: #222;
-    margin-top: 40px;
-    border-left: 5px solid #007bff;
-    padding-left: 15px;
-}
-
-/* 3. 프로필 이미지 및 자기소개 */
-img {
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    margin-bottom: 15px;
-}
-
-h3 {
-    color: #555;
-    font-weight: 500;
-}
-
-/* 4. 정의 목록 (기본 정보) 스타일링 */
-dl {
-    display: grid;
-    grid-template-columns: 50px 1fr;
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-}
-
-dt h3 { margin: 0; font-size: 1rem; color: #007bff; }
-dd { margin: 0; padding-bottom: 10px; font-weight: bold; }
-
-/* 5. 리스트(관심사, 프로그램) 스타일링 */
-ul {
-    list-style: none;
-    padding: 0;
+/* 2. 전체 레이아웃 (2단 분리) */
+.content-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    gap: 30px;
+    padding: 0 20px;
 }
 
-ul li {
-    background: #e9ecef;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    transition: all 0.2s ease-in-out;
+/* --- 3. 메인 콘텐츠 (좌측) --- */
+.resume-main {
+    flex: 7;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
 }
 
-
-/* 6. 테이블 스타일링 (주요 이력) */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #fff;
-    margin-top: 20px;
-}
-
-th, td {
-    border: 1px solid #dee2e6;
-    padding: 12px;
-    text-align: left;
-}
-
-th {
-    background-color: #007bff;
+/* 히어로 배너 */
+.intro-banner {
+    padding: 70px 50px;
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    border-radius: 24px;
     color: white;
+    box-shadow: 0 10px 30px rgba(0, 123, 255, 0.2);
 }
+.main-slogan { font-size: 2.5rem; line-height: 1.3; margin: 0 0 15px 0; font-weight: 700; }
+.main-slogan span { color: #ffffff; border-bottom: 5px solid rgba(255, 255, 255, 0.4); }
+.sub-slogan { font-size: 1.1rem; opacity: 0.9; margin: 0; font-weight: 300; letter-spacing: 1px; }
 
-tr:nth-child(even) { background-color: #f2f2f2; }
-
-/* 7. 링크 및 하단 주소 */
-a {
+/* 섹션 타이틀 공통 */
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 25px;
     color: #007bff;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 800;
+}
+.section-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #dee2e6;
+}
+
+/* 태그 리스트 공통 뼈대 */
+.tag-list { 
+    list-style: none; 
+    padding: 0; 
+    display: flex; 
+    flex-wrap: wrap; 
+    gap: 12px; 
+}
+.tag-list li {
+    padding: 12px 26px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+/* 스킬 섹션: 정적 데이터 (호버 및 애니메이션 완전 제거) */
+.skills-section .tag-list li {
+    background: white;
+    color: #4b5563;
+    border: 1px solid #edf2f7;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+    cursor: default; /* 클릭할 수 없는 정보임을 명시 */
+}
+
+/* 관심사 섹션: 인터랙티브 버튼 (어포던스 부여 및 가독성 개선) */
+.interests-section .tag-list li {
+    background: #e9ecef;
+    color: #4b5563;
+    border: 1px solid transparent;
+    cursor: pointer; /* 클릭 가능한 요소임을 나타냄 */
+    transition: all 0.2s ease-in-out; /* 절제된 속도의 트랜지션 */
+}
+.interests-section .tag-list li:hover {
+    background: #2d3436; /* 흰색 글씨와 완벽한 대비를 이루는 짙은 차콜색 */
+    color: #ffffff;
+    transform: translateY(-3px); /* 위로 살짝만 반응 */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+/* 테이블 디자인 */
+.table-container { 
+    background: white; 
+    border-radius: 20px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05); 
+}
+table { width: 100%; border-collapse: collapse; }
+th { background: #f8f9fa; padding: 18px; text-align: left; color: #636e72; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }
+td { padding: 22px 18px; border-top: 1px solid #f1f3f5; font-size: 0.95rem; }
+tr:hover td { background-color: #fdfdfd; color: #007bff; transition: background-color 0.2s; }
+
+/* --- 4. 사이드바 (우측) --- */
+.profile-sidebar {
+    flex: 3;
+}
+.sticky-container {
+    position: sticky;
+    top: 60px; /* 스크롤 시 화면 상단에서 60px 띄운 상태로 고정 */
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.profile-card, .contact-section {
+    background: white;
+    border-radius: 24px;
+    padding: 35px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.06);
+}
+
+/* 증명사진 */
+.image-box {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 25px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 6px solid #f0f2f5;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.image-box img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 기본 정보 표 */
+.basic-info { display: grid; grid-template-columns: 1fr 2fr; gap: 15px; border-top: 1px solid #f1f3f5; padding-top: 25px; }
+.basic-info dt { color: #b2bec3; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; }
+.basic-info dd { font-weight: 700; color: #2d3436; }
+
+/* 연락처 및 SNS */
+.side-title { font-size: 1.2rem; margin-bottom: 25px; font-weight: 800; color: #2d3436; }
+.contact-box p { font-size: 0.9rem; margin: 12px 0; display: flex; flex-direction: column; gap: 5px; }
+.contact-box span { color: #9ca3af; font-size: 0.75rem; font-weight: 600; }
+.contact-box a { color: #007bff; text-decoration: none; font-weight: 700; font-size: 1rem; }
+
+.sns-links { list-style: none; padding: 0; margin-top: 25px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.btn-sns {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 12px;
     text-decoration: none;
+    color: #4b5563;
+    font-size: 0.9rem;
+    font-weight: 700;
+    transition: 0.2s;
 }
+.btn-sns:hover { background: #2d3436; color: white; transform: translateY(-3px); }
 
-a:hover { text-decoration: underline; }
-
-ul li:hover {
-    background-color: #007bff; /* 배경을 파란색으로 */
-    color: #ffffff;           /* 글자를 하얀색으로 */
-    transform: scale(1.05);   /* 크기 살짝 키우기 (선택 사항) */
+/* --- 5. 반응형 미디어 쿼리 --- */
+@media (max-width: 1024px) {
+    .content-wrapper { flex-direction: column; }
+    .resume-main, .profile-sidebar { flex: none; width: 100%; }
+    .sticky-container { position: static; }
 }
-
-address {
-    margin-top: 50px;
-    padding: 20px;
-    background: #343a40;
-    color: white;
-    border-radius: 8px;
-    font-style: normal;
-}
-
-address a { color: #80bdff; }

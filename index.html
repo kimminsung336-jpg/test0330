@@ -2,75 +2,95 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <title>내 프로필</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doffel | Portfolio Profile</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>프로필 (Profile)</h1>
 
-    <h2>자기소개</h2>
-    <img src="profile.png" alt="내 증명사진" width="200">
-    <h3>논리로 설계하는 디자이너 김민성입니다.</h3>
+    <div class="content-wrapper"> 
+        <main class="resume-main">
+            <section class="intro-banner">
+                <h2 class="main-slogan">논리로 설계하는 디자이너,<br><span>김민성</span>입니다.</h2>
+                <p class="sub-slogan">Visual Engineering & 3D Modeling Specialist</p>
+            </section>
 
-    <h2>기본 정보</h2>
-    <dl>
-        <dt><h3>이름:</h3></dt>
-        <dd>김민성</dd>
-        <dt><h3>나이:</h3></dt>
-        <dd>23세</dd>
-        <dt><h3>직업:</h3></dt>
-        <dd>시각 디자이너</dd>
-    </dl>
+            <section class="skills-section">
+                <h3 class="section-title">Technical Skills</h3>
+                <ul class="tag-list">
+                    <li>Blender (3D Modeling)</li>
+                    <li>After Effects</li>
+                    <li>Premiere Pro</li>
+                    <li>Photoshop</li>
+                    <li>Illustrator</li> 
+                    <li>InDesign</li>
+                </ul>
+            </section>
 
-    <h2>관심사 및 취미</h2>
-    <ul>
-        <li>독서</li>
-        <li>전시회 관람</li> 
-        <li>3D 모델링</li>
-    </ul>
+            <section class="history-section">
+                <h3 class="section-title">Work Experience</h3>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Period</th>
+                                <th>Description</th>
+                                <th>Note</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>25.05 - 25.11</td>
+                                <td>ADEX 내부 디자인 기획 보조</td>
+                                <td>내부 조감도 시각화 및 배너 디자인</td>
+                            </tr>
+                            <tr>
+                                <td>25.07 - 26.03</td>
+                                <td>고양축산농협 월간 뉴스 토픽</td>
+                                <td>영상편집 및 모션그래픽 담당</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
 
-     <h2>사용 프로그램</h2>
-    <ul>
-        <li>포토샵</li>
-        <li>일러스트레이터</li> 
-        <li>인디자인</li>
-        <li>프리미어</li>
-        <li>에프터이펙트</li> 
-        <li>블렌더</li>
-    </ul>
+            <section class="interests-section">
+                <h3 class="section-title">Interests</h3>
+                <ul class="tag-list gray">
+                    <li>3D Character Modeling</li>
+                    <li>Visual Engineering</li>
+                    <li>Package Design</li>
+                </ul>
+            </section>
+        </main>
 
-    <h2>주요 이력</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>기간</th>
-                <th>내용</th>
-                <th>비고</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>[2025.05 - 2025.11]</td>
-                <td>[ADEX 내부 디자인 기획 보조]</td>
-                <td>[내부 조감도 시각화 및 배너 디자인]</td>
-            </tr>
-             <tr>
-                <td>[2025.07 - 2026.03]</td>
-                <td>[고양축산농협 월간 뉴스 토픽]</td>
-                <td>[영상편집 및 모션그래픽 담당]</td>
-            </tr>
-        </tbody>
-    </table>
+        <aside class="profile-sidebar">
+            <div class="sticky-container">
+                <section class="profile-card">
+                    <div class="image-box">
+                        <img src="profile.png" alt="Profile Image">
+                    </div>
+                    <dl class="basic-info">
+                        <dt>Name</dt> <dd>김민성</dd>
+                        <dt>Age</dt> <dd>23세</dd>
+                        <dt>Job</dt> <dd>Visual Designer</dd>
+                    </dl>
+                </section>
 
-    <h2>SNS 및 연락처</h2>
-    <ol>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">GitHub</a></li>
-    </ol>
-    
-    <address>
-        <p>이메일: <a href="mailto:email@example.com">email@example.com</a></p>
-        <p>전화번호: <a href="tel:010-0000-0000">010-0000-0000</a></p>
-    </address>
+                <section class="contact-section">
+                    <h3 class="side-title">Contact & SNS</h3>
+                    <div class="contact-box">
+                        <p><span>Email</span> <a href="mailto:email@example.com">email@example.com</a></p>
+                        <p><span>Tel</span> <a href="tel:010-0000-0000">010-0000-0000</a></p>
+                    </div>
+                    <ul class="sns-links">
+                        <li><a href="#" class="btn-sns">Instagram</a></li>
+                        <li><a href="#" class="btn-sns">GitHub</a></li>
+                    </ul>
+                </section>
+            </div>
+        </aside>
+    </div>
+
 </body>
 </html>
