@@ -211,6 +211,11 @@
         </div>
     </footer>
 
+    <!-- Lightbox (hover preview) -->
+    <div class="lightbox" aria-hidden="true">
+        <img src="" alt="">
+    </div>
+
     <script>
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -228,6 +233,62 @@
         window.addEventListener('scroll', () => {
             if (window.scrollY > 20) nav.classList.add('nav--scrolled');
             else nav.classList.remove('nav--scrolled');
+        });
+
+        // Hover lightbox — 작품 호버 시 풀이미지 띄우고,
+        // 마우스가 "원본 작품 영역 또는 띄운 이미지 영역" 안에 있는 동안 유지
+        const lightbox = document.querySelector('.lightbox');
+        const lightboxImg = lightbox.querySelector('img');
+        const workItems = document.querySelectorAll('.work');
+
+        let activeWork = null;
+
+        function isInside(x, y, rect) {
+            return rect && x >= rect.left && x <= rect.right
+                        && y >= rect.top && y <= rect.bottom;
+        }
+
+        function showLightbox(work, src, alt) {
+            activeWork = work;
+            lightboxImg.src = src;
+            lightboxImg.alt = alt;
+            lightbox.classList.add('is-visible');
+        }
+
+        function hideLightbox() {
+            lightbox.classList.remove('is-visible');
+            activeWork = null;
+        }
+
+        // 호버 시 라이트박스 열기 (mouseleave는 더 이상 사용하지 않음)
+        workItems.forEach(work => {
+            const thumbImg = work.querySelector('.work__thumb img');
+            if (!thumbImg) return;
+
+            work.addEventListener('mouseenter', () => {
+                showLightbox(work, thumbImg.src, thumbImg.alt);
+            });
+        });
+
+        // 전역 mousemove로 닫는 조건 판단:
+        // 마우스가 (현재 호버한 작품 영역) AND (띄운 이미지 영역) 모두 밖에 있을 때만 닫음
+        document.addEventListener('mousemove', (e) => {
+            if (!lightbox.classList.contains('is-visible')) return;
+
+            const imgRect = lightboxImg.getBoundingClientRect();
+            const workRect = activeWork ? activeWork.getBoundingClientRect() : null;
+
+            const overImage = isInside(e.clientX, e.clientY, imgRect);
+            const overWork = isInside(e.clientX, e.clientY, workRect);
+
+            if (!overImage && !overWork) {
+                hideLightbox();
+            }
+        });
+
+        // ESC 키로도 닫기
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') hideLightbox();
         });
     </script>
 </body>
